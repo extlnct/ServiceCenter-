@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ServiceCenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="int" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="100" />
+          <Property Name="YearOfManufacture" Type="date" />
+          <Property Name="PurchaseDate" Type="date" />
+          <Property Name="WarrantyExpiryDate" Type="date" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="DeviceTypeID" />
+          </Key>
+          <Property Name="DeviceTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RepairStatuses">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="ServiceOrders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceID" Type="int" Nullable="false" />
+          <Property Name="TechnicianID" Type="int" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="ProblemDescription" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="AcceptanceDate" Type="datetime" Nullable="false" />
+          <Property Name="CompletionDate" Type="datetime" />
+          <Property Name="EstimatedCost" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="FinalCost" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="SpareParts">
+          <Key>
+            <PropertyRef Name="PartID" />
+          </Key>
+          <Property Name="PartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="QuantityInStock" Type="int" />
+        </EntityType>
+        <EntityType Name="Technicians">
+          <Key>
+            <PropertyRef Name="TechnicianID" />
+          </Key>
+          <Property Name="TechnicianID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SecondName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Specialization" Type="nvarchar" MaxLength="100" />
+          <Property Name="HireDate" Type="date" />
+          <Property Name="Salary" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="UsedParts">
+          <Key>
+            <PropertyRef Name="UsedPartID" />
+          </Key>
+          <Property Name="UsedPartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="PartID" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Devices__Custome__3D5E1FD2">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devices__DeviceT__3E52440B">
+          <End Role="DeviceTypes" Type="Self.DeviceTypes" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="DeviceTypeID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devices__Manufac__3F466844">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Devic__46E78A0C">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="DeviceID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Statu__48CFD27E">
+          <End Role="RepairStatuses" Type="Self.RepairStatuses" Multiplicity="1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairStatuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Techn__47DBAE45">
+          <End Role="Technicians" Type="Self.Technicians" Multiplicity="0..1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technicians">
+              <PropertyRef Name="TechnicianID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="TechnicianID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SparePart__Manuf__4CA06362">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="SpareParts" Type="Self.SpareParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="SpareParts">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsedParts__Order__5070F446">
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="1" />
+          <End Role="UsedParts" Type="Self.UsedParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceOrders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="UsedParts">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsedParts__PartI__5165187F">
+          <End Role="SpareParts" Type="Self.SpareParts" Multiplicity="1" />
+          <End Role="UsedParts" Type="Self.UsedParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpareParts">
+              <PropertyRef Name="PartID" />
+            </Principal>
+            <Dependent Role="UsedParts">
+              <PropertyRef Name="PartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ServiceCenterModelContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RepairStatuses" EntityType="Self.RepairStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceOrders" EntityType="Self.ServiceOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpareParts" EntityType="Self.SpareParts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Technicians" EntityType="Self.Technicians" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsedParts" EntityType="Self.UsedParts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Devices__Custome__3D5E1FD2" Association="Self.FK__Devices__Custome__3D5E1FD2">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devices__DeviceT__3E52440B" Association="Self.FK__Devices__DeviceT__3E52440B">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devices__Manufac__3F466844" Association="Self.FK__Devices__Manufac__3F466844">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Devic__46E78A0C" Association="Self.FK__ServiceOr__Devic__46E78A0C">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Statu__48CFD27E" Association="Self.FK__ServiceOr__Statu__48CFD27E">
+            <End Role="RepairStatuses" EntitySet="RepairStatuses" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Techn__47DBAE45" Association="Self.FK__ServiceOr__Techn__47DBAE45">
+            <End Role="Technicians" EntitySet="Technicians" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SparePart__Manuf__4CA06362" Association="Self.FK__SparePart__Manuf__4CA06362">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="SpareParts" EntitySet="SpareParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsedParts__Order__5070F446" Association="Self.FK__UsedParts__Order__5070F446">
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+            <End Role="UsedParts" EntitySet="UsedParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsedParts__PartI__5165187F" Association="Self.FK__UsedParts__PartI__5165187F">
+            <End Role="SpareParts" EntitySet="SpareParts" />
+            <End Role="UsedParts" EntitySet="UsedParts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ServiceCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Devices__Custome__3D5E1FD2" FromRole="Customers" ToRole="Devices" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="DeviceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfManufacture" Type="DateTime" Precision="0" />
+          <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="WarrantyExpiryDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Devices__Custome__3D5E1FD2" FromRole="Devices" ToRole="Customers" />
+          <NavigationProperty Name="DeviceTypes" Relationship="Self.FK__Devices__DeviceT__3E52440B" FromRole="Devices" ToRole="DeviceTypes" />
+          <NavigationProperty Name="Manufacturers" Relationship="Self.FK__Devices__Manufac__3F466844" FromRole="Devices" ToRole="Manufacturers" />
+          <NavigationProperty Name="ServiceOrders" Relationship="Self.FK__ServiceOr__Devic__46E78A0C" FromRole="Devices" ToRole="ServiceOrders" />
+        </EntityType>
+        <EntityType Name="DeviceTypes">
+          <Key>
+            <PropertyRef Name="DeviceTypeID" />
+          </Key>
+          <Property Name="DeviceTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Devices__DeviceT__3E52440B" FromRole="DeviceTypes" ToRole="Devices" />
+        </EntityType>
+        <EntityType Name="Manufacturers">
+          <Key>
+            <PropertyRef Name="ManufacturerID" />
+          </Key>
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__Devices__Manufac__3F466844" FromRole="Manufacturers" ToRole="Devices" />
+          <NavigationProperty Name="SpareParts" Relationship="Self.FK__SparePart__Manuf__4CA06362" FromRole="Manufacturers" ToRole="SpareParts" />
+        </EntityType>
+        <EntityType Name="RepairStatuses">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ServiceOrders" Relationship="Self.FK__ServiceOr__Statu__48CFD27E" FromRole="RepairStatuses" ToRole="ServiceOrders" />
+        </EntityType>
+        <EntityType Name="ServiceOrders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" />
+          <Property Name="TechnicianID" Type="Int32" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="ProblemDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AcceptanceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompletionDate" Type="DateTime" Precision="3" />
+          <Property Name="EstimatedCost" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="FinalCost" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Devices" Relationship="Self.FK__ServiceOr__Devic__46E78A0C" FromRole="ServiceOrders" ToRole="Devices" />
+          <NavigationProperty Name="RepairStatuses" Relationship="Self.FK__ServiceOr__Statu__48CFD27E" FromRole="ServiceOrders" ToRole="RepairStatuses" />
+          <NavigationProperty Name="Technicians" Relationship="Self.FK__ServiceOr__Techn__47DBAE45" FromRole="ServiceOrders" ToRole="Technicians" />
+          <NavigationProperty Name="UsedParts" Relationship="Self.FK__UsedParts__Order__5070F446" FromRole="ServiceOrders" ToRole="UsedParts" />
+        </EntityType>
+        <EntityType Name="SpareParts">
+          <Key>
+            <PropertyRef Name="PartID" />
+          </Key>
+          <Property Name="PartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManufacturerID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="QuantityInStock" Type="Int32" />
+          <NavigationProperty Name="Manufacturers" Relationship="Self.FK__SparePart__Manuf__4CA06362" FromRole="SpareParts" ToRole="Manufacturers" />
+          <NavigationProperty Name="UsedParts" Relationship="Self.FK__UsedParts__PartI__5165187F" FromRole="SpareParts" ToRole="UsedParts" />
+        </EntityType>
+        <EntityType Name="Technicians">
+          <Key>
+            <PropertyRef Name="TechnicianID" />
+          </Key>
+          <Property Name="TechnicianID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Specialization" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HireDate" Type="DateTime" Precision="0" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="ServiceOrders" Relationship="Self.FK__ServiceOr__Techn__47DBAE45" FromRole="Technicians" ToRole="ServiceOrders" />
+        </EntityType>
+        <EntityType Name="UsedParts">
+          <Key>
+            <PropertyRef Name="UsedPartID" />
+          </Key>
+          <Property Name="UsedPartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="PartID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ServiceOrders" Relationship="Self.FK__UsedParts__Order__5070F446" FromRole="UsedParts" ToRole="ServiceOrders" />
+          <NavigationProperty Name="SpareParts" Relationship="Self.FK__UsedParts__PartI__5165187F" FromRole="UsedParts" ToRole="SpareParts" />
+        </EntityType>
+        <Association Name="FK__Devices__Custome__3D5E1FD2">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devices__DeviceT__3E52440B">
+          <End Role="DeviceTypes" Type="Self.DeviceTypes" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeviceTypes">
+              <PropertyRef Name="DeviceTypeID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="DeviceTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Devices__Manufac__3F466844">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="1" />
+          <End Role="Devices" Type="Self.Devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="Devices">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Devic__46E78A0C">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="DeviceID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="DeviceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SparePart__Manuf__4CA06362">
+          <End Role="Manufacturers" Type="Self.Manufacturers" Multiplicity="0..1" />
+          <End Role="SpareParts" Type="Self.SpareParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manufacturers">
+              <PropertyRef Name="ManufacturerID" />
+            </Principal>
+            <Dependent Role="SpareParts">
+              <PropertyRef Name="ManufacturerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Statu__48CFD27E">
+          <End Role="RepairStatuses" Type="Self.RepairStatuses" Multiplicity="1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RepairStatuses">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceOr__Techn__47DBAE45">
+          <End Role="Technicians" Type="Self.Technicians" Multiplicity="0..1" />
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technicians">
+              <PropertyRef Name="TechnicianID" />
+            </Principal>
+            <Dependent Role="ServiceOrders">
+              <PropertyRef Name="TechnicianID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsedParts__Order__5070F446">
+          <End Role="ServiceOrders" Type="Self.ServiceOrders" Multiplicity="1" />
+          <End Role="UsedParts" Type="Self.UsedParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceOrders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="UsedParts">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsedParts__PartI__5165187F">
+          <End Role="SpareParts" Type="Self.SpareParts" Multiplicity="1" />
+          <End Role="UsedParts" Type="Self.UsedParts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpareParts">
+              <PropertyRef Name="PartID" />
+            </Principal>
+            <Dependent Role="UsedParts">
+              <PropertyRef Name="PartID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ServiceCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customers" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" />
+          <EntitySet Name="DeviceTypes" EntityType="Self.DeviceTypes" />
+          <EntitySet Name="Manufacturers" EntityType="Self.Manufacturers" />
+          <EntitySet Name="RepairStatuses" EntityType="Self.RepairStatuses" />
+          <EntitySet Name="ServiceOrders" EntityType="Self.ServiceOrders" />
+          <EntitySet Name="SpareParts" EntityType="Self.SpareParts" />
+          <EntitySet Name="Technicians" EntityType="Self.Technicians" />
+          <EntitySet Name="UsedParts" EntityType="Self.UsedParts" />
+          <AssociationSet Name="FK__Devices__Custome__3D5E1FD2" Association="Self.FK__Devices__Custome__3D5E1FD2">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devices__DeviceT__3E52440B" Association="Self.FK__Devices__DeviceT__3E52440B">
+            <End Role="DeviceTypes" EntitySet="DeviceTypes" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Devices__Manufac__3F466844" Association="Self.FK__Devices__Manufac__3F466844">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="Devices" EntitySet="Devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Devic__46E78A0C" Association="Self.FK__ServiceOr__Devic__46E78A0C">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SparePart__Manuf__4CA06362" Association="Self.FK__SparePart__Manuf__4CA06362">
+            <End Role="Manufacturers" EntitySet="Manufacturers" />
+            <End Role="SpareParts" EntitySet="SpareParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Statu__48CFD27E" Association="Self.FK__ServiceOr__Statu__48CFD27E">
+            <End Role="RepairStatuses" EntitySet="RepairStatuses" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceOr__Techn__47DBAE45" Association="Self.FK__ServiceOr__Techn__47DBAE45">
+            <End Role="Technicians" EntitySet="Technicians" />
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsedParts__Order__5070F446" Association="Self.FK__UsedParts__Order__5070F446">
+            <End Role="ServiceOrders" EntitySet="ServiceOrders" />
+            <End Role="UsedParts" EntitySet="UsedParts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsedParts__PartI__5165187F" Association="Self.FK__UsedParts__PartI__5165187F">
+            <End Role="SpareParts" EntitySet="SpareParts" />
+            <End Role="UsedParts" EntitySet="UsedParts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ServiceCenterModelContainer" CdmEntityContainer="ServiceCenterEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ServiceCenterModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="ServiceCenterModel.Devices">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="YearOfManufacture" ColumnName="YearOfManufacture" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="WarrantyExpiryDate" ColumnName="WarrantyExpiryDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceTypes">
+            <EntityTypeMapping TypeName="ServiceCenterModel.DeviceTypes">
+              <MappingFragment StoreEntitySet="DeviceTypes">
+                <ScalarProperty Name="DeviceTypeID" ColumnName="DeviceTypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturers">
+            <EntityTypeMapping TypeName="ServiceCenterModel.Manufacturers">
+              <MappingFragment StoreEntitySet="Manufacturers">
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RepairStatuses">
+            <EntityTypeMapping TypeName="ServiceCenterModel.RepairStatuses">
+              <MappingFragment StoreEntitySet="RepairStatuses">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceOrders">
+            <EntityTypeMapping TypeName="ServiceCenterModel.ServiceOrders">
+              <MappingFragment StoreEntitySet="ServiceOrders">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="ProblemDescription" ColumnName="ProblemDescription" />
+                <ScalarProperty Name="AcceptanceDate" ColumnName="AcceptanceDate" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="EstimatedCost" ColumnName="EstimatedCost" />
+                <ScalarProperty Name="FinalCost" ColumnName="FinalCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpareParts">
+            <EntityTypeMapping TypeName="ServiceCenterModel.SpareParts">
+              <MappingFragment StoreEntitySet="SpareParts">
+                <ScalarProperty Name="PartID" ColumnName="PartID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="QuantityInStock" ColumnName="QuantityInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Technicians">
+            <EntityTypeMapping TypeName="ServiceCenterModel.Technicians">
+              <MappingFragment StoreEntitySet="Technicians">
+                <ScalarProperty Name="TechnicianID" ColumnName="TechnicianID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
+                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsedParts">
+            <EntityTypeMapping TypeName="ServiceCenterModel.UsedParts">
+              <MappingFragment StoreEntitySet="UsedParts">
+                <ScalarProperty Name="UsedPartID" ColumnName="UsedPartID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="PartID" ColumnName="PartID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
