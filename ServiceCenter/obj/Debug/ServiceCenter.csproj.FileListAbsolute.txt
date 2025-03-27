@@ -22,3 +22,5 @@ C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\ServiceCenter.
 C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\ServiceCenter.pdb
 C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\AddCustomerWindow.g.cs
 C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\AddCustomerWindow.baml
+C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\AutorisationWindow.g.cs
+C:\Users\matys\source\repos\ServiceCenter\ServiceCenter\obj\Debug\AutorisationWindow.baml

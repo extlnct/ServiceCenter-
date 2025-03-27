@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|c:\\users\\matys\\source\\repos\\servicecenter\\servicecenter\\autorisationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|solutionrelative:servicecenter\\autorisationwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|c:\\users\\matys\\source\\repos\\servicecenter\\servicecenter\\autorisationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|solutionrelative:servicecenter\\autorisationwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|c:\\users\\matys\\source\\repos\\servicecenter\\servicecenter\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|solutionrelative:servicecenter\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|c:\\users\\matys\\source\\repos\\servicecenter\\servicecenter\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|solutionrelative:servicecenter\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|c:\\users\\matys\\source\\repos\\servicecenter\\servicecenter\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79921AEA-B9A5-4915-8515-E291394873E4}|ServiceCenter\\ServiceCenter.csproj|solutionrelative:servicecenter\\viewmodel\\mainwindowviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AutorisationWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\AutorisationWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ServiceCenter\\AutorisationWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\AutorisationWindow.xaml.cs",
+              "RelativeToolTip": "ServiceCenter\\AutorisationWindow.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA4wE4AAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T19:03:05.649Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ServiceCenter\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\MainWindow.xaml",
+              "RelativeToolTip": "ServiceCenter\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-27T17:57:41.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AutorisationWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\AutorisationWindow.xaml",
+              "RelativeDocumentMoniker": "ServiceCenter\\AutorisationWindow.xaml",
+              "ToolTip": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\AutorisationWindow.xaml",
+              "RelativeToolTip": "ServiceCenter\\AutorisationWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-03-27T17:52:10.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainWindowViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeDocumentMoniker": "ServiceCenter\\ViewModel\\MainWindowViewModel.cs",
+              "ToolTip": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\ViewModel\\MainWindowViewModel.cs",
+              "RelativeToolTip": "ServiceCenter\\ViewModel\\MainWindowViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T17:48:19.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ServiceCenter\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\matys\\source\\repos\\ServiceCenter\\ServiceCenter\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ServiceCenter\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T17:48:06.76Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

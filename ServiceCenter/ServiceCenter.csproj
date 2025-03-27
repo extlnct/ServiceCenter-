@@ -67,6 +67,9 @@
     <Compile Include="AddCustomerWindow.xaml.cs">
       <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AutorisationWindow.xaml.cs">
+      <DependentUpon>AutorisationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Customers.cs">
       <DependentUpon>ServiceCenterModel.tt</DependentUpon>
     </Compile>
@@ -111,7 +114,12 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Singleton.cs" />
     <Page Include="AddCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AutorisationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
